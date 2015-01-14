@@ -2,7 +2,7 @@ package Software.Task;
 
 import toolBox.Print;
 import Hardware.Computer;
-import Error.Error;
+import Error.ErrorTypes;
 
 public class Task {
 	
