@@ -65,9 +65,7 @@ public class Core {
 		ram2.addPrice(0);
 		ram4.addPrice(0);
 		ram5.addPrice(0);
-		ram6.addPrice(0);
-		
-		console.init();
+		ram6.addPrice(0);		
 	}
 	
 	public static Bank bank1 = new Bank("First Bank", "198-162-0-1");

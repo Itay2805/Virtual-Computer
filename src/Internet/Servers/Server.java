@@ -24,7 +24,16 @@ public class Server {
 	}
 	
 	public void stop() {
+		on = false;
+		Print.info("Shuting down the server!");
+	}
+	
+	public void dataToServer(String address, String data) {
 		
 	}
-
+	
+	public void dataToComputer(String address, String data) {
+		
+	}
+	
 }

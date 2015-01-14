@@ -28,7 +28,7 @@ public class OS {
 		Print.info("Wallet(wallet) - Bank Account info");
 		Print.info("Console(console) - opens the console!");
 		Print.info("Shtdown(shutdown) - Shuts down the computer");
-		Print.info("IInstall (web) - install .prog files!");
+		Print.info("Browser (web) - browse the web! [WIP]");
 		Print.info("---------------------------------------------------------");
 		String action = reader.next();
 		return action;

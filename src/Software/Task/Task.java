@@ -23,7 +23,7 @@ public class Task {
 		this.minUsage = minUsage;
 		this.space = space;
 		this.needIntenet = needIntenet;
-		if(Error.NO_MEMORY_FOR_SOFTWARE(computer.getHd(), space)) {
+		if(ErrorTypes.NO_MEMORY_FOR_SOFTWARE(computer.getHd(), space)) {
 			Print.info("---------------------------------------------------");
 			Print.info("Error when trying to start: " + (computer.getOs().getName() + ".task." + name + "." + format));
 			Print.info("---------------------------------------------------");
@@ -58,4 +58,5 @@ public class Task {
 	public int getMinSpace(){
 		return space;
 	}
+	
 }

@@ -24,6 +24,7 @@ public class Wallet extends Task{
 				Print.info("Starting " + (computer.getOs().getName() + ".task.start.wallet.exe"));
 				Print.info("Starting " + (computer.getOs().getName() + ".net.connection.open.IP.sys | " + bank.getAddress()));
 			}
+			computer.openConnection("175-165-96-1", "connect&?=1d558f4s25f");
 			computer.getRam().addUsedRAM(minUsage);
 			main();
 		}
