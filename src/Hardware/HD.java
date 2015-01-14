@@ -2,8 +2,6 @@ package Hardware;
 
 public class HD {
 	
-	//adsadsa dsjbdjksa hfhs fkj hsdjfh dsjfh sdjh fjkdf ksd hkfjd hskj fkjsdfh ksd
-	
 	public String name;
 	public String companyName;
 	
