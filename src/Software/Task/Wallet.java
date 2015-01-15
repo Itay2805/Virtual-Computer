@@ -24,7 +24,6 @@ public class Wallet extends Task{
 				Print.info("Starting " + (computer.getOs().getName() + ".task.start.wallet.exe"));
 				Print.info("Starting " + (computer.getOs().getName() + ".net.connection.open.IP.sys | " + bank.getAddress()));
 			}
-			computer.openConnection("175-165-96-1", "connect&?=1d558f4s25f");
 			computer.getRam().addUsedRAM(minUsage);
 			main();
 		}
@@ -87,7 +86,8 @@ public class Wallet extends Task{
 	public void acc(String acc) {
 		Print.info("-------------------------------------");
 		Print.info("Account name: " + acc);
-		Print.info("Total Money: $" + bank.getAccMoney(acc));
+		Print.info("Total Money: $" + bank.getAccMoney(computer, acc));
+		Print.info("Total Money(DEBUG): $" + getData());
 		Print.info("-------------------------------------");
 		String action = reader.next();
 		
@@ -113,19 +113,21 @@ public class Wallet extends Task{
 	}
 	
 	public void send(String acc, String pass) {
-		if(computer.ROOT) {
-			Print.info("Output from " + (computer.getOs().getName() + ".net.connection.IP." + bank.getAddress() + ".sendData.sys | " + acc + "=2&ie=" + pass));
-		}
-		if(bank.isOk(acc, pass)) {
-			if(computer.ROOT) {
-				Print.info("Input from " + (computer.getOs().getName() + ".net.connection.IP." + bank.getAddress() + ".getData.sys | " + bank.getAccMoney(acc)));
-			}
+		if(bank.isOk(computer, acc, pass)) {
 			acc(acc);
 		}else {
-			if(computer.ROOT) {
-				Print.info("Input from " + (computer.getOs().getName() + ".net.connection.IP." + bank.getAddress() + ".getData.sys | unknown"));
-			}
 			main();
+		}
+	}
+	
+	public String getData() {
+		String data = computer.getMessage("198-162-0-1");
+		while(true) {
+			if(!data.equals(null)) {
+				if(data.startsWith("$=")) {
+					return data.replace("$=", "");
+				}
+			}
 		}
 	}
 

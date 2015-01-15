@@ -1,6 +1,7 @@
 package Internet.Servers;
 
 import toolBox.Print;
+import Hardware.Computer;
 
 public class Bank extends Server{
 	
@@ -18,6 +19,7 @@ public class Bank extends Server{
 	
 	public Bank(String name, String address) {
 		super(address);
+		this.address = address;
 		this.name = name;
 	}
 	
@@ -40,23 +42,27 @@ public class Bank extends Server{
 		exist = false;
 	}
 	
-	public boolean isOk(String acc, String pass) {
+	public boolean isOk(Computer computer, String acc, String pass) {
 		for(int i = 0; i < existingAcc; i++) {
 			if(accounts[i].equals(acc.trim())  && passwords[i].equals(pass.trim())) {
+				super.sendData(computer, address, "true");
 				return true;
 			}else {
 				continue;
 			}
 		}
+		super.sendData(computer, address, "false");
 		return false;
 	}
 	
-	public int getAccMoney(String acc) {
+	public int getAccMoney(Computer computer, String acc) {
 		for(int i = 0; i < existingAcc; i++) {
 			if(accounts[i].equals(acc.trim())) {
+				super.sendData(computer, address, ("$=" + Integer.toString(money[i])));
 				return money[i];
 			}
 		}
+		super.sendData(computer, address, "$=0");
 		return 0;
 	}
 	

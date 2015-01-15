@@ -75,8 +75,9 @@ public class Core {
 	public static Console console = new Console(computer1, "console", 32, 128);
 		
 	public static void main(String[] args) {
-		init();
+		init();		
 		computer1.boot();
+		bank1.sendData(computer1, "192.168.1.1", "This Is A TEST");
 		bank1.addAcc("Itay".trim(), "123456".trim());
 		bank1.addAcc("Ron".trim(), "753".trim());
 		bank1.addMoneyToAcc("Itay", 1000);

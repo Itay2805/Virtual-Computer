@@ -1,8 +1,10 @@
 package Hardware;
 
-import Software.OS;
+import java.util.HashMap;
+
 import toolBox.Print;
 import Error.ErrorTypes;
+import Software.OS;
 
 public class Computer {
 		
@@ -11,10 +13,12 @@ public class Computer {
 	public CPU cpu;
 	public HD hd;
 	
+	public HashMap<String, String> data = new HashMap<String, String>();
+	
 	public String ip;
 	
 	public boolean on = false;
-	public boolean ROOT = false;
+	public boolean ROOT = true;
 	
 	public Computer(OS os,RAM ram, CPU cpu, HD hd, String ip) {
 		this.os = os;
@@ -46,6 +50,20 @@ public class Computer {
 		}
 	}
 	
+	public void addData(String address, String message) {
+		if(ROOT) {
+			Print.info("Input from " + address + " | " + message);
+		}
+		data.put(address, message);
+	}
+	
+	public void removeData(String address) {
+		if(ROOT) {
+			Print.info("[PLACE_HOLDER]");
+		}
+		data.put(address, null);
+	}
+	
 	/** Getters **/
 	
 	public CPU getCpu() {
@@ -64,6 +82,10 @@ public class Computer {
 		return ram;
 	}
 	
+	public String getMessage(String address) {
+		return data.get(address).toString();
+	}
+	
 	/** Setters **/
 	
 	public void setCpu(CPU cpu) {
@@ -80,10 +102,6 @@ public class Computer {
 	
 	public void setRam(RAM ram) {
 		this.ram = ram;
-	}
-	
-	public void openConnection(String adddress, String data) {
-		
 	}
 	
 }

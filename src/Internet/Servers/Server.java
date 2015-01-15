@@ -1,7 +1,7 @@
 package Internet.Servers;
 
-import Hardware.Computer;
 import toolBox.Print;
+import Hardware.Computer;
 
 public class Server {
 	
@@ -29,11 +29,8 @@ public class Server {
 		Print.info("Shuting down the server!");
 	}
 	
-	public void dataToServer(Computer computer, String address, String data) {
-		
-	}
-	
-	public void dataToComputer(Computer computer, String address, String data) {
+	public void sendData(Computer computer, String address, String message) {
+		computer.addData(address, message);
 	}
 	
 }
