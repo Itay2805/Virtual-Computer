@@ -43,6 +43,7 @@ public class Bank extends Server{
 	}
 	
 	public boolean isOk(Computer computer, String acc, String pass) {
+		Print.info("DEBUG: a " + acc + " p " + pass);
 		for(int i = 0; i < existingAcc; i++) {
 			if(accounts[i].equals(acc.trim())  && passwords[i].equals(pass.trim())) {
 				super.sendData(computer, address, "true");
@@ -55,15 +56,12 @@ public class Bank extends Server{
 		return false;
 	}
 	
-	public int getAccMoney(Computer computer, String acc) {
+	public void getAccMoney(Computer computer, String acc) {
 		for(int i = 0; i < existingAcc; i++) {
 			if(accounts[i].equals(acc.trim())) {
 				super.sendData(computer, address, ("$=" + Integer.toString(money[i])));
-				return money[i];
 			}
 		}
-		super.sendData(computer, address, "$=0");
-		return 0;
 	}
 	
 	public void transfareMoney(String from, int value, String to) {
@@ -111,6 +109,13 @@ public class Bank extends Server{
 		}
 		for(int a = 0; a < existingAcc; a++) {
 			System.out.println("Acount " + a + " password: " + passwords[a]);
+		}
+	}
+	
+	public void getData(Computer c, String message) {
+		if(message.startsWith("a?=")) {
+			String data[] = message.split(";");
+			isOk(c, data[0].toString().replace("a?=", ""), data[1].toString());
 		}
 	}
 	

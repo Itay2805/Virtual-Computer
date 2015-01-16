@@ -33,4 +33,8 @@ public class Server {
 		computer.addData(address, message);
 	}
 	
+	public void getData(Computer computer, Server server, String message) {
+		
+	}
+	
 }

@@ -84,10 +84,13 @@ public class Wallet extends Task{
 	}
 	
 	public void acc(String acc) {
+		bank.getAccMoney(computer, acc);
+		if(computer.ROOT) {
+			Print.info("Output from " + computer.getOs().getName() + ".net.connection.sendData.sys | [198-162-0-1] a!=null~?ID=" + acc);
+		}
 		Print.info("-------------------------------------");
 		Print.info("Account name: " + acc);
-		Print.info("Total Money: $" + bank.getAccMoney(computer, acc));
-		Print.info("Total Money(DEBUG): $" + getData());
+		Print.info("Total Money: $" + getData());
 		Print.info("-------------------------------------");
 		String action = reader.next();
 		
@@ -112,8 +115,21 @@ public class Wallet extends Task{
 		login();
 	}
 	
-	public void send(String acc, String pass) {
+	public void send1(String acc, String pass) {
 		if(bank.isOk(computer, acc, pass)) {
+			acc(acc);
+		}else {
+			main();
+		}
+	}
+	
+	public void send(String acc, String pass) {
+		bank.getData(computer, "a?=" + acc + ";" + pass + ";");
+		if(computer.ROOT) {
+			Print.info("Output from " + computer.getOs().getName() + ".net.connection.sendData.sys | [198-162-0-1] a?=" + acc + "p?=" + pass);	
+		}
+		String data = getData();
+		if(data.equals("true")) {
 			acc(acc);
 		}else {
 			main();
@@ -122,13 +138,15 @@ public class Wallet extends Task{
 	
 	public String getData() {
 		String data = computer.getMessage("198-162-0-1");
-		while(true) {
-			if(!data.equals(null)) {
-				if(data.startsWith("$=")) {
-					return data.replace("$=", "");
-				}
+		if(!data.equals(null)) {
+			if(data.startsWith("$=")) {
+				return data.replace("$=", "");
+			}else if(data.equals("true")) {
+				return "true";
+			}else if(data.equals("false")) {
+				return "false";
 			}
 		}
+		return "unknown input";
 	}
-
 }

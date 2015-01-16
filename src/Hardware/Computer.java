@@ -18,7 +18,7 @@ public class Computer {
 	public String ip;
 	
 	public boolean on = false;
-	public boolean ROOT = true;
+	public boolean ROOT = false;
 	
 	public Computer(OS os,RAM ram, CPU cpu, HD hd, String ip) {
 		this.os = os;
