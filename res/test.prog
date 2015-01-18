@@ -1,7 +1,7 @@
 # form;prog;
 # prop;Ram.take;1;
 Droid.IO.out.print;----------------------------------;
-- if;test;=;test;
+- if;test;=;false;
 * Droid.IO.out.print;____We_are_in_loop!
 * Droid.IO.out.print;Droid.IO.in.getData.sys;
 Droid.IO.out.print;______please_enter_your_name;

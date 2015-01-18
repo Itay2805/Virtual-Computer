@@ -115,14 +115,6 @@ public class Wallet extends Task{
 		login();
 	}
 	
-	public void send1(String acc, String pass) {
-		if(bank.isOk(computer, acc, pass)) {
-			acc(acc);
-		}else {
-			main();
-		}
-	}
-	
 	public void send(String acc, String pass) {
 		bank.getData(computer, "a?=" + acc + ";" + pass + ";");
 		if(computer.ROOT) {

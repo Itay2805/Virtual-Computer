@@ -36,8 +36,8 @@ public class Info extends Task{
 		Print.info("CPU speed: " + computer.getCpu().getSpeed() + "MHz");
 		Print.info("-------------------------------------");
 		Print.info("HD name: " + computer.getHd().getName());
-		Print.info("HD total space: " + computer.getHd().getTotalSpace() + "MB ( " + (computer.getHd().getTotalSpace() / 1024) + "GB )");
-		Print.info("HD used space: " + computer.getHd().getUsedSpase() + "MB ( " + (computer.getHd().getUsedSpase() / 1024) + "GB )");
+		Print.info("HD total space: " + computer.getHd().getTotalSpace() + "MB ( " + (computer.getHd().getTotalSpace() / 1000) + "GB )");
+		Print.info("HD used space: " + computer.getHd().getUsedSpase() + "MB ( " + (computer.getHd().getUsedSpase() / 1000) + "GB )");
 		Print.info("-------------------------------------");
 		reader.next();
 		stop();

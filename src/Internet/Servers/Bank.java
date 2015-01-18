@@ -43,7 +43,6 @@ public class Bank extends Server{
 	}
 	
 	public boolean isOk(Computer computer, String acc, String pass) {
-		Print.info("DEBUG: a " + acc + " p " + pass);
 		for(int i = 0; i < existingAcc; i++) {
 			if(accounts[i].equals(acc.trim())  && passwords[i].equals(pass.trim())) {
 				super.sendData(computer, address, "true");

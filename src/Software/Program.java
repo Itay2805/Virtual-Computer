@@ -118,8 +118,10 @@ public class Program {
                 			input = in.next();
                 		}
             		}
+            	}else if(line.startsWith("*") && !inLoop){
+    				continue;
             	}else {
-    				Print.info("[ERROR/runtime] UNKNOW COMMAND!");
+            		Print.info("[ERROR/runtime] UNKNOW COMMAND!");
             	}
         	}
             reader.close();
