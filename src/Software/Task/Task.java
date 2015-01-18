@@ -4,6 +4,13 @@ import toolBox.Print;
 import Hardware.Computer;
 import Error.ErrorTypes;
 
+/**
+ * Includes the basic code wich run the Tasks(such as Info).
+ * 
+ * 
+ * @author Itay Almog
+ *
+ */
 public class Task {
 	
 	public String name;
@@ -16,6 +23,16 @@ public class Task {
 	
 	public boolean needIntenet = false;
 	
+	/**
+	 * This is the basic information needed to rn the task.
+	 * 
+	 * @param computer - The Computer To run on.
+	 * @param name - The name of the task.
+	 * @param format - The Format of the task(.exe, .prog(CP), .app).
+	 * @param minUsage - Min RAM usage to run the task.
+	 * @param space - Min space needed.
+	 * @param needIntenet - If the Task need internet.
+	 */
 	public Task(Computer computer, String name, String format, int minUsage, int space ,boolean needIntenet) {
 		this.name = name;
 		this.computer = computer;
@@ -40,6 +57,22 @@ public class Task {
 			computer.getHd().addUsedSpace(space);
 		}
 	}
+	
+	/**
+	 * The code wich runs when starting the Task.
+	 */
+	public void start() {}
+	
+	/**
+	 * The code wich runs when stoping the task.
+	 */
+	public void stop() {}
+	
+	/**
+	 * Usually used as the main code of the task.
+	 */
+	public void main() {}
+	
 	
 	/** Getters**/
 

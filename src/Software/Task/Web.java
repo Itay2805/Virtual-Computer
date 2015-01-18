@@ -11,6 +11,7 @@ import Internet.Servers.WebStore;
 public class Web extends Task{
 	
 	//NOTE! This web thing is still bugy and is not working!
+	//NOTE! USING THIS WILL CUSE YOU TO CRASH!
 	
 	public WebStore store;
 	public Server server = new Server();
@@ -57,10 +58,7 @@ public class Web extends Task{
 	}
 	
 	public void connect(String address, String message) {
-		Print.info("test2");
-		server.directToServer(computer, "WebStore.net", message);
-		Print.info("test2");
-		//send(server.getServer(address), computer, "connect?=ID>");
+		server.directToServer(computer, address, message);
 		String data = computer.getMessage(address);
 		Print.info(data);
 	}

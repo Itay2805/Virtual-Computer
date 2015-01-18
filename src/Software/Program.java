@@ -9,9 +9,18 @@ import java.util.Scanner;
 import toolBox.Print;
 import Hardware.Computer;
 
+/**
+ * This includes the code for the CP(Custom Program) to work, 
+ * To test your program just run the game and use "run;[name];" in the console.
+ * 
+ * @author Itay Almog
+ *
+ */
 public class Program {
 	
 	public String format;
+	public String name;
+	public Computer computer;
 		
 	public int RAM;
 	
@@ -22,7 +31,17 @@ public class Program {
 	
 	public static Scanner in = new Scanner(System.in);
 	
+	/**
+	 * 
+	 * This reads the code from the file and do what the code in the file should do(for eg. %os%.IO.out.print; means to print something to the console).
+	 * 
+	 * @param name(String) - The name of the program(File).
+	 * @param computer(Computer) - The Computer the run the game on
+	 */
+	
 	public Program(String name, Computer computer) {
+		this.name = name;
+		this.computer = computer;
 		done = false;
 		inti = false;
 		FileReader isr = null;
@@ -44,7 +63,7 @@ public class Program {
             		if(currentLine[0].equals("# form")) {
             			format = currentLine[1];
             		}else if(currentLine[0].equals("# fin") && inti) {
-            			stop(name, computer);
+            			stop();
             			Print.info("---------------------------------------------------");
             			Print.info("       Welcome to Command Line by Minicream!");
             			Print.info("---------------------------------------------------");
@@ -130,7 +149,10 @@ public class Program {
         }
 	}
 	
-	public void stop(String name, Computer computer) {
+	/**
+	 * Stops the program.
+	 */
+	public void stop() {
 		if(computer.ROOT) {
 			Print.info("Starting " + computer.getOs().getName() + ".task.kill." + name + "." + format);
 		}

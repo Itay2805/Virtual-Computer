@@ -38,7 +38,7 @@ public class Console extends Task{
 		computer.getRam().addUsedRAM(-minUsage);
 	}
 	
-	/** The App Itself **/
+	//** The App Itself **//
 	
 	public void main() {
 		String[] action = reader.next().split(";");
@@ -52,7 +52,7 @@ public class Console extends Task{
 			if(action[1].equals("true")) {
 				computer.ROOT = true;
 				Print.info("ROOT_OUTPUT have enabled!");
-				Print.info(computer.getOs().getName() + ".root.IO.out.coreInfo.sys | TRUE [BIN: 0]");
+				Print.info(computer.getOs().getName() + ".root.IO.out.coreInfo.sys | TRUE [BIN: 1]");
 			}else if(action[1].equals("false")){
 				Print.info("ROOT_OUTPUT have disabled!");
 				computer.ROOT = false;

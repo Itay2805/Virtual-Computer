@@ -1,5 +1,12 @@
 package Hardware;
 
+/**
+ * 
+ * This contaons the basic code of the Random Access memory (RAM) - in the future it will be better.
+ * 
+ * @author Itay Almog
+ *
+ */
 public class RAM {
 	
 	public String name;
@@ -9,13 +16,21 @@ public class RAM {
 	public int totalRAM;
 	public int usedRAM = 0;
 	
+	/**
+	 * 
+	 * Setts up the RAM
+	 * 
+	 * @param totalRAM - Total RAM capacity
+	 * @param name - The RAMs name
+	 * @param companyName - The company who created the RAM
+	 */
 	public RAM(int totalRAM, String name, String companyName) {
 		this.name = name;
 		this.totalRAM = totalRAM;
 		this.companyName = companyName;
 	}
 	
-	/** Getters **/
+	//** Getters **//
 	
 	public String getName() {
 		return name;
@@ -29,7 +44,7 @@ public class RAM {
 		return usedRAM;
 	}
 	
-	/** Setters **/
+	//** Setters **//
 	
 	public void takeTotalRAM(int value) {
 		totalRAM -= value;

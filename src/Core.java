@@ -12,7 +12,7 @@ import Software.Task.Web;
 
 public class Core {
 		
-	/** CPU - Names + Procces Speed **/
+	//** CPU - Names + Procces Speed **//
 	
 	public static CPU cpu1 = new CPU(200, "BitCoin Miner", "Custom Chip CO."); // 200 MB
 	public static CPU cpu2 = new CPU(500, "Family Core", "Fintel"); // 500 MB
@@ -20,7 +20,7 @@ public class Core {
 	public static CPU cpu4 = new CPU(2000, "F7", "Fintel"); // 2 GB
 	public static CPU cpu5 = new CPU(4000, "Super Storm Core", "Next Gen Computers CO."); // 4 GB
 	
-	/** Hardrive - Name + Storage Place + Company **/
+	//** Hardrive - Name + Storage Place + Company **//
 	
 	public static HD hd1 = new HD(100000, "small HD", "External and Internal Storage CO."); // 100 GB
 	public static HD hd2 = new HD(250000, "Family Hardrive", "Fintel"); // 250 GB
@@ -29,8 +29,7 @@ public class Core {
 	public static HD hd5 = new HD(2500000, "Super HD", "Next Gen Computers CO."); // 2.5 TB
 	public static HD hd6 = new HD(5000000, "Super HD *Limit Edition*", "Next Gen Computers CO."); // 5 TB
 	
-	/** RAM - Name + Space **/
-	//ONLY FOR TESTING! [WIP]
+	//** RAM - Name + Space **//
 	
 	public static RAM ram1 = new RAM(2000, "MiniRam", "Fintel CO."); // 2 GB
 	public static RAM ram2 = new RAM(4000, "Family RAM", "Fintel CO."); // 4 GB
@@ -39,7 +38,7 @@ public class Core {
 	public static RAM ram5 = new RAM(12000, "MindStormX", "Next Gen. Computers CO."); // 12 GB
 	public static RAM ram6 = new RAM(24000, "Super Gamer", "Gaming reasurce"); // 24 GB 
 	
-	/** OS - Name + Company**/
+	//** OS - Name + Company**//
 	
 	public static OS os1 = new OS(23552, 512, "Doors 8.1", "Minicream");
 	public static OS os2 = new OS(27648, 512, "Jack OS X", "Grapple");
@@ -47,7 +46,7 @@ public class Core {
 	
 	public static Computer computer1 = new Computer(os3, ram6, cpu5, hd6, "192.168.1.1");
 	
-	/** Setts the price of the Hardware(CPU, HD, etc...**/
+	/** Setts the price of the Hardware(CPU, HD, etc...)**/
 	
 	public static void init() {
 		cpu1.addPrice(25);

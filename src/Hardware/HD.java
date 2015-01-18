@@ -1,5 +1,12 @@
 package Hardware;
 
+/**
+ * 
+ * This class has the code which handles the storage space of the computer.
+ * 
+ * @author Itay Almog
+ *
+ */
 public class HD {
 	
 	public String name;
@@ -9,13 +16,22 @@ public class HD {
 	public int totalSpace;
 	public int usedSpace = 0;
 	
+	/**
+	 * 
+	 * This sets up the HD (name total storage space...).
+	 * 
+	 * @param totalSpace - Total storage space
+	 * @param name - The name of the Hard Drive
+	 * @param companyName - The company who created the HD
+	 * 
+	 */
 	public HD(int totalSpace, String name, String companyName) {
 		this.name = name;
 		this.totalSpace = totalSpace;
 		this.companyName = companyName;
 	}
 	
-	/** Getters **/
+	//** Getters **//
 	
 	public String getName() {
 		return name;
@@ -29,7 +45,7 @@ public class HD {
 		return usedSpace;
 	}
 	
-	/** Setters **/
+	//** Setters **//
 	
 	public void takeTotalSpace(int space) {
 		totalSpace -= space;

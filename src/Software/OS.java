@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 import toolBox.Print;
 
+/**
+ * 
+ * This class includes the GUI of the OS, in the future it will have some more stuff...
+ * 
+ * @author Itay Almog
+ *
+ */
 public class OS {
 	
 	public String name;
@@ -14,6 +21,15 @@ public class OS {
 	
 	public Scanner reader = new Scanner(System.in);
 	
+	/**
+	 * 
+	 * Sets up the data for the computer(such as OS name).
+	 * 
+	 * @param basicSpace - The space thats the OS files need
+	 * @param basicUsage - The RAM needed for the OS to work
+	 * @param name - The OS name
+	 * @param companyName - The Company who made the OS
+	 */
 	public OS(int basicSpace, int basicUsage, String name, String companyName) {
 		this.name = name;
 		this.companyName = companyName;
@@ -21,6 +37,12 @@ public class OS {
 		this.basicUsage = basicUsage;
 	}
 	
+	/**
+	 * 
+	 * This handles the user input to the OS and the basic GUI.
+	 * 
+	 * @return String of data - the users input.
+	 */
 	public String GUI() {
 		Print.info("---------------Welcome to " + name + " OS!---------------");
 		Print.info("Choose an action(Type): ");
@@ -34,7 +56,7 @@ public class OS {
 		return action;
 	}
 	
-	/** Getters**/
+	//** Getters**//
 
 	public String getName() {
 		return name;

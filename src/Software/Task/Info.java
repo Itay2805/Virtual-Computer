@@ -6,10 +6,26 @@ import toolBox.Print;
 import Error.ErrorTypes;
 import Hardware.Computer;
 
+/**
+ * 
+ * This Task prints the computer specs.
+ * 
+ * @author Itay Almog
+ *
+ */
 public class Info extends Task{
 	
 	public Scanner reader = new Scanner(System.in);
-
+	
+	/**
+	 * 
+	 * Sets up the task.
+	 * 
+	 * @param computer - The Computer To run on.
+	 * @param name - The name of the task.
+	 * @param minUsage - Min RAM usage to run the task.
+	 * @param space - Min space needed.
+	 */
 	public Info(Computer computer, String name, int minUsage, int space) {
 		super(computer, name, "exe", minUsage, space, false);
 	}
@@ -20,11 +36,11 @@ public class Info extends Task{
 				Print.info("Starting " + (computer.getOs().getName() + ".task.start.info.exe"));
 			}
 			computer.getRam().addUsedRAM(minUsage);
-			task();
+			main();
 		}
 	}
 	
-	public void task() {
+	public void main() {
 		Print.info("------------Computer info------------");
 		Print.info("OS name: " + computer.getOs().getName());
 		Print.info("-------------------------------------");

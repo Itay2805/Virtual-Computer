@@ -1,6 +1,5 @@
 package Internet.Servers;
 
-import toolBox.Print;
 import Hardware.Computer;
 
 
@@ -14,15 +13,12 @@ public class WebStore extends Server{
 	
 	public String address = "WebStore.net";
 
+	/**
+	 * This will hold the code for the online store where you can to download some tools.  [WIP]
+	 */
 	public WebStore() {
 		super("WebStore.net");
 		super.addServerToIndex("WebStore.net", this);
-		Print.info("test");
-		main();
-	}
-	
-	public void main() {
-		
 	}
 	
 	public void getData(Computer computer, String message) {

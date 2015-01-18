@@ -7,10 +7,27 @@ import Error.ErrorTypes;
 import Hardware.Computer;
 import Internet.Servers.Bank;
 
+/**
+ * 
+ * This task allows the user to connect to his bank account To see how much money they got,
+ * Transfer money to another player, Register a new account. 
+ * 
+ * @author Itay Almog
+ *
+ */
 public class Wallet extends Task{
 	
 	public Bank bank;
-
+	
+	/**
+	 * 
+	 * Sets up the task.
+	 * 
+	 * @param computer - The Computer To run on.
+	 * @param minUsage - Min RAM usage to run the task.
+	 * @param space - Min space needed.
+	 * @param bank - The bank which the task is connected to.
+	 */
 	public Wallet(Computer computer, int minUsage, int space, Bank bank) {
 		super(computer, "Wallet", "exe", minUsage, space, true);
 		this.bank = bank;
@@ -38,8 +55,6 @@ public class Wallet extends Task{
 		computer.getRam().addUsedRAM(-minUsage);
 	}
 	
-	/** The App itself **/
-	
 	public void main() {
 		Print.info("-------------------------------------");
 		Print.info("Choose action:");
@@ -60,6 +75,9 @@ public class Wallet extends Task{
 		}
 	}
 	
+	/**
+	 * Takes the Username and Password to login to a exciting account, The data will be sent to the server.
+	 */
 	public void login() {
 		Print.info("-------------------------------------");
 		Print.info("Login:");
@@ -71,6 +89,9 @@ public class Wallet extends Task{
 		send(acc, pass);
 	}
 	
+	/**
+	 * Takes the Username and Password to register a new account, The data will be sent to the server.
+	 */
 	public void register() {
 		Print.info("-------------------------------------");
 		Print.info("Please enter your information:");
@@ -83,6 +104,12 @@ public class Wallet extends Task{
 		main();
 	}
 	
+	/**
+	 * 
+	 * This shows to the user his account information (Name and Balance).
+	 * 
+	 * @param acc - The account name.
+	 */
 	public void acc(String acc) {
 		bank.getAccMoney(computer, acc);
 		if(computer.ROOT) {
@@ -101,6 +128,12 @@ public class Wallet extends Task{
 		}
 	}
 	
+	/**
+	 * 
+	 * This take the amount of money and the reciever of the money, The data will be sent to the server.
+	 * 
+	 * @param acc - The account name of the sender.
+	 */
 	public void transfare(String acc) {
 		Print.info("-------------------------------------");
 		Print.info("To: ");
@@ -115,6 +148,13 @@ public class Wallet extends Task{
 		login();
 	}
 	
+	/**
+	 * 
+	 * This sends to the server the Account name and password to the server to check if the details are ok.
+	 * 
+	 * @param acc - This is the account name.
+	 * @param pass - This is the password.
+	 */
 	public void send(String acc, String pass) {
 		bank.getData(computer, "a?=" + acc + ";" + pass + ";");
 		if(computer.ROOT) {
@@ -128,6 +168,12 @@ public class Wallet extends Task{
 		}
 	}
 	
+	/**
+	 * 
+	 * This takes the data from the server and initialize it.
+	 * 
+	 * @return String of data
+	 */
 	public String getData() {
 		String data = computer.getMessage("198-162-0-1");
 		if(!data.equals(null)) {
