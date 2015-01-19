@@ -3,6 +3,7 @@ import Hardware.Computer;
 import Hardware.HD;
 import Hardware.RAM;
 import Internet.Servers.Bank;
+import Internet.Servers.Index;
 import Internet.Servers.WebStore;
 import Software.OS;
 import Software.Task.Console;
@@ -48,7 +49,7 @@ public class Core {
 	
 	/** Setts the price of the Hardware(CPU, HD, etc...)**/
 	
-	public static void init() {
+	public static void init() {		
 		cpu1.addPrice(25);
 		cpu2.addPrice(100);
 		cpu4.addPrice(250);
@@ -69,13 +70,15 @@ public class Core {
 		ram6.addPrice(0);		
 	}
 	
-	public static Bank bank1 = new Bank("First Bank", "198-162-0-1");
-	public static WebStore store1 = new WebStore();
+	public static Index index = new Index();
 	
-	public static Info info = new Info(computer1, "info", 16, 32);
-	public static Wallet wallet = new Wallet(computer1, 32, 128, bank1);
-	public static Console console = new Console(computer1, "console", 32, 128);
-	public static Web web = new Web(computer1, 0, 0);
+	public static Bank bank1 = new Bank("First Bank", "FirstBank.gov", index);
+	public static WebStore store1 = new WebStore("WebStore.net", index);
+	
+	public static Info info = new Info(computer1, "info", 16, 32, index);
+	public static Wallet wallet = new Wallet(computer1, 32, 128, bank1, index);
+	public static Console console = new Console(computer1, "console", 32, 128, index);
+	public static Web web = new Web(computer1, 0, 0, index);
 	
 	public static void main(String[] args) {
 		init();		

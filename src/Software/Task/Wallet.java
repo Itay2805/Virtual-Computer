@@ -6,6 +6,7 @@ import toolBox.Print;
 import Error.ErrorTypes;
 import Hardware.Computer;
 import Internet.Servers.Bank;
+import Internet.Servers.Index;
 
 /**
  * 
@@ -28,8 +29,8 @@ public class Wallet extends Task{
 	 * @param space - Min space needed.
 	 * @param bank - The bank which the task is connected to.
 	 */
-	public Wallet(Computer computer, int minUsage, int space, Bank bank) {
-		super(computer, "Wallet", "exe", minUsage, space, true);
+	public Wallet(Computer computer, int minUsage, int space, Bank bank, Index index) {
+		super(computer, "Wallet", "exe", minUsage, space, index);
 		this.bank = bank;
 	}
 	
@@ -39,7 +40,6 @@ public class Wallet extends Task{
 		if(!ErrorTypes.NO_RAM_FOR_TASK(computer.getRam(), minUsage) && computer.on) {
 			if(computer.ROOT) {
 				Print.info("Starting " + (computer.getOs().getName() + ".task.start.wallet.exe"));
-				Print.info("Starting " + (computer.getOs().getName() + ".net.connection.open.IP.sys | " + bank.getAddress()));
 			}
 			computer.getRam().addUsedRAM(minUsage);
 			main();
@@ -49,7 +49,6 @@ public class Wallet extends Task{
 	
 	public void stop() {
 		if(computer.ROOT) {
-			Print.info("Starting " + (computer.getOs().getName() + ".net.connection.close.IP.sys | 198-168-0-1"));
 			Print.info("Starting " + (computer.getOs().getName() + ".task.kill.info.exe"));
 		}
 		computer.getRam().addUsedRAM(-minUsage);
@@ -158,7 +157,7 @@ public class Wallet extends Task{
 	public void send(String acc, String pass) {
 		bank.getData(computer, "a?=" + acc + ";" + pass + ";");
 		if(computer.ROOT) {
-			Print.info("Output from " + computer.getOs().getName() + ".net.connection.sendData.sys | [198-162-0-1] a?=" + acc + "p?=" + pass);	
+			Print.info("Output from " + computer.getOs().getName() + ".net.connection.sendData.sys | " + bank.getAddress() + " a?=" + acc + "p?=" + pass);	
 		}
 		String data = getData();
 		if(data.equals("true")) {
@@ -175,7 +174,7 @@ public class Wallet extends Task{
 	 * @return String of data
 	 */
 	public String getData() {
-		String data = computer.getMessage("198-162-0-1");
+		String data = computer.getMessage("FirstBank.gov");
 		if(!data.equals(null)) {
 			if(data.startsWith("$=")) {
 				return data.replace("$=", "");

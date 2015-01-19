@@ -31,10 +31,11 @@ public class Bank extends Server{
 	 * @param name - The banks name
 	 * @param address - The address of the bank server
 	 */
-	public Bank(String name, String address) {
+	public Bank(String name, String address, Index index) {
 		super(address);
 		this.address = address;
 		this.name = name;
+		index.addServerToIndex(address, this);
 	}
 	
 	/**
@@ -168,6 +169,19 @@ public class Bank extends Server{
 		if(message.startsWith("a?=")) {
 			String data[] = message.split(";");
 			isOk(computer, data[0].toString().replace("a?=", ""), data[1].toString());
+		}else if(message.startsWith("connect?=ID>")) {
+			site(computer, message);
+		}
+	}
+	
+	public void site(Computer computer, String message) {
+		String action = message.replace("connect?=ID>", "");
+		if(action.equals("index")) {
+			super.sendData(computer, address, "The First Bank!\n------------------------------------------------\n\nPlease choose an action:\n * Login\n * Register\n");
+		}else if(action.equals("login")) {
+			super.sendData(computer, address, "The First Bank!\n------------------------------------------------\n\nThis feature is still in development!\n");
+		}else if(action.equals("register")) {
+			super.sendData(computer, address, "The First Bank!\n------------------------------------------------\n\nThis feature is still in development!\n");
 		}
 	}
 	

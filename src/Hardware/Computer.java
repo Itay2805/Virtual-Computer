@@ -84,7 +84,11 @@ public class Computer {
 	 */
 	public void addData(String address, String message) {
 		if(ROOT) {
-			Print.info("Input from " + address + " | " + message);
+			if(message.length() > 25) {
+				Print.info("Input from " + address + " | Data is too big / Encrypted!");
+			}else {
+				Print.info("Input from " + address + " | " + message);
+			}
 		}
 		data.put(address, message);
 	}

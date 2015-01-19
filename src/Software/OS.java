@@ -50,7 +50,7 @@ public class OS {
 		Print.info("Wallet(wallet) - Bank Account info");
 		Print.info("Console(console) - opens the console!");
 		Print.info("Shtdown(shutdown) - Shuts down the computer");
-		Print.info("Browser (web) - browse the web! [WIP] DO NOT USE!YOU WILL CRASH!");
+		Print.info("Browser (web) - browse the web!");
 		Print.info("---------------------------------------------------------");
 		String action = reader.next();
 		return action;

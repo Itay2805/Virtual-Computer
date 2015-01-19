@@ -5,6 +5,7 @@ import java.util.Scanner;
 import toolBox.Print;
 import Error.ErrorTypes;
 import Hardware.Computer;
+import Internet.Servers.Index;
 
 /**
  * 
@@ -26,8 +27,8 @@ public class Info extends Task{
 	 * @param minUsage - Min RAM usage to run the task.
 	 * @param space - Min space needed.
 	 */
-	public Info(Computer computer, String name, int minUsage, int space) {
-		super(computer, name, "exe", minUsage, space, false);
+	public Info(Computer computer, String name, int minUsage, int space, Index index) {
+		super(computer, name, "exe", minUsage, space, index);
 	}
 	
 	public void start() {

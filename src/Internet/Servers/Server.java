@@ -1,7 +1,5 @@
 package Internet.Servers;
 
-import java.util.HashMap;
-
 import toolBox.Print;
 import Hardware.Computer;
 
@@ -12,8 +10,6 @@ public class Server {
 	 *Still Working on this! 
 	 * 
 	 */
-	
-	public HashMap<String, Server> index = new HashMap<String, Server>();
 	
 	public String address;
 	
@@ -47,58 +43,6 @@ public class Server {
 		on = false;
 		Print.info("Shuting down the server!");
 	}
-	
-	//**********************[WIP]*****************************//
-	
-	/**
-	 * 
-	 * Adds a server to the games database, 
-	 * The server will be stored in a HashMap - address is the value and the server is the key.
-	 * 
-	 * @param address - The servers address
-	 * @param server - The server
-	 */
-	public void addServerToIndex(String address, Server server) {
-		index.put(address, server);
-	}
-	
-	/**
-	 * 
-	 * Removes a server from an address.
-	 * 
-	 * @param address - The address to remove data from
-	 */
-	public void removeServerFromIndex(String address) {
-		index.put(address, null);
-	}
-	
-	/**
-	 * 
-	 * Routs to a server.
-	 * NOTE! THIS IS STILL BUGGY AND MIGHT CUSE YOU TO CRASH WHEN TRYING TO USE THIS METHOD!!!
-	 * 
-	 * @param computer - The Computer to direct
-	 * @param address - The address to connect
-	 * @param message - The connecting message
-	 */
-	public void directToServer (Computer computer, String address, String message) {
-		Server server = index.get(address);
-		server.getData(computer, message);
-	}
-	
-	/**
-	 * 
-	 * Gets a server using a key(address). 
-	 * NOTE! THIS IS STILL BUGGY AND MIGHT CUSE YOU TO CRASH WHEN TRYING TO USE THIS METHOD!!!
-	 * 
-	 * @param address - The address of the server to get 
-	 * @return and server
-	 */
-	public Server getServer(String address) {
-		return index.get(address);
-	}
-	
-	//********************************************************//
 	
 	/**
 	 * 

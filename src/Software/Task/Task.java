@@ -1,8 +1,9 @@
 package Software.Task;
 
 import toolBox.Print;
-import Hardware.Computer;
 import Error.ErrorTypes;
+import Hardware.Computer;
+import Internet.Servers.Index;
 
 /**
  * Includes the basic code wich run the Tasks(such as Info).
@@ -17,6 +18,7 @@ public class Task {
 	public String format;
 	
 	public Computer computer;
+	public Index index;
 	
 	public int minUsage;
 	public int space;
@@ -33,13 +35,13 @@ public class Task {
 	 * @param space - Min space needed.
 	 * @param needIntenet - If the Task need internet.
 	 */
-	public Task(Computer computer, String name, String format, int minUsage, int space ,boolean needIntenet) {
+	public Task(Computer computer, String name, String format, int minUsage, int space ,Index index) {
 		this.name = name;
 		this.computer = computer;
 		this.format = format;
 		this.minUsage = minUsage;
 		this.space = space;
-		this.needIntenet = needIntenet;
+		this.index = index;
 		if(ErrorTypes.NO_MEMORY_FOR_SOFTWARE(computer.getHd(), space)) {
 			Print.info("---------------------------------------------------");
 			Print.info("Error when trying to start: " + (computer.getOs().getName() + ".task." + name + "." + format));

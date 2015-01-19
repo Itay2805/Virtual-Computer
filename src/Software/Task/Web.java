@@ -5,6 +5,7 @@ import java.util.Scanner;
 import toolBox.Print;
 import Error.ErrorTypes;
 import Hardware.Computer;
+import Internet.Servers.Index;
 import Internet.Servers.Server;
 import Internet.Servers.WebStore;
 
@@ -14,12 +15,11 @@ public class Web extends Task{
 	//NOTE! USING THIS WILL CUSE YOU TO CRASH!
 	
 	public WebStore store;
-	public Server server = new Server();
 	
 	public Scanner reader = new Scanner(System.in);
 
-	public Web(Computer computer, int minUsage, int space) {
-		super(computer, "Browser", "exe", minUsage, space, true);
+	public Web(Computer computer, int minUsage, int space, Index index) {
+		super(computer, "Browser", "exe", minUsage, space, index);
 	}
 	
 	public void start() {
@@ -28,6 +28,15 @@ public class Web extends Task{
 				Print.info("Starting " + (computer.getOs().getName() + ".task.start.Browser.exe"));
 			}
 			computer.getRam().addUsedRAM(minUsage);
+			Print.info("------------------------------------------------");
+			Print.info("http://Browser.net/");
+			Print.info("------------------------------------------------");
+			Print.info(" ");
+			Print.info(" ");
+			Print.info("         Please type the IP to connect");
+			Print.info(" ");
+			Print.info(" ");
+			Print.info("------------------------------------------------");
 			main();
 		}
 	}
@@ -40,27 +49,44 @@ public class Web extends Task{
 	}
 	
 	public void main() {
-		Print.info("------------------------------------------------");
-		Print.info("http://Browser.net/");
-		Print.info("------------------------------------------------");
-		Print.info(" ");
-		Print.info(" ");
-		Print.info("         Please type the IP to connect          ");
-		Print.info(" ");
-		Print.info(" ");
-		Print.info("------------------------------------------------");
 		String input = reader.next();
 		if(input.equals("close")) {
 			stop();
 		}else {
-			connect(input, "connect?=ID>");
+			String[] action = input.split("/");
+			if(action.length == 1) {
+				connect(action[0], "index");
+			}else {
+				connect(action[0], action[1]);
+			}
 		}
 	}
 	
 	public void connect(String address, String message) {
-		server.directToServer(computer, address, message);
-		String data = computer.getMessage(address);
-		Print.info(data);
+		if(computer.ROOT) {
+			Print.info("Output from " + computer.getOs().getName() + ".net.connection.sendData.sys | " + address + " connect?=ID>" + message + " ");	
+		}
+		try {
+			index.directToServer(computer, address.trim(),  "connect?=ID>" + message);
+			String data = computer.getMessage(address);
+			Print.info("------------------------------------------------");
+			Print.info("http://" + address + "/" + message + "/");
+			Print.info("------------------------------------------------");
+			Print.info(data);
+			Print.info("------------------------------------------------");
+			main();
+		}catch (Exception e){
+			Print.info("------------------------------------------------");
+			Print.info("http://" + address + "/");
+			Print.info("------------------------------------------------");
+			Print.info(" ");
+			Print.info("                404 Error");
+			Print.info("                Page not exist");
+			Print.info(" ");
+			Print.info(" ");
+			Print.info("------------------------------------------------");
+			main();
+		}
 	}
 	
 	public void send(Server server, Computer computer, String message) {

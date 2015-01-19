@@ -5,6 +5,7 @@ import java.util.Scanner;
 import toolBox.Print;
 import Error.ErrorTypes;
 import Hardware.Computer;
+import Internet.Servers.Index;
 import Software.Program;
 
 public class Console extends Task{
@@ -12,8 +13,8 @@ public class Console extends Task{
 	public Program program;
 
 	public Console(Computer computer, String name, int minUsage,
-			int space) {
-		super(computer, name, "exe", minUsage, space, false);
+			int space, Index index) {
+		super(computer, name, "exe", minUsage, space, index);
 	}
 	
 	public Scanner reader = new Scanner(System.in);
